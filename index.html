@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ds Prac</title>
+</head>
+<body>
+
+<pre>
+<h3>Arrays</h3>
+
+# P1
+
+from array import *
+a=array('i',[1,2,3])
+print(a)
+
+a.append(4)
+print(a)
+
+a2=array('i',[5,6,7,8])
+a.extend(a2)
+print(a)
+
+a.insert(3,55)
+print(a)
+
+del a[6]
+print(a)
+
+res=a.pop()
+print(res)
+print(a)
+
+a3=array('i',[11,12,13,14])
+a4=array('i',[21,22,23,24])
+
+a3.extend(a4)
+a.extend(a3)
+print(a)
+print(len(a))
+print(a[8])
+
+</pre>
+
+<pre>
+<h3>Array using user input</h3>
+
+# Q2
+length=eval(input('Enter Length of the array: '))
+dt=input('Enter datatype code: ')
+arr=array(dt,[])
+
+for i in range(length):
+  n=eval(input('Enter value: '))
+  arr.append(n)
+
+print(arr)
+</pre>
+
+<pre>
+<h3>Numpy 2*2</h3>
+
+# q3
+
+import numpy as np
+
+a=np.array([[1,2],[3,4]])
+print(a)
+
+print(a.dtype)
+print(np.linalg.matrix_rank(a))
+print(a.shape)
+b=a.flatten()
+print(b)
+c=np.array([[5,6],[7,8]])
+print(a+c)
+print(a-c)
+print(a*c)
+print(c/a)
+
+</pre>
+
+<pre>
+<h3>Numpy 3*3</h3>
+
+# q4
+
+import numpy as np
+a=np.array([[1,2,3],[4,5,6],[7,8,9]])
+print(a)
+print(a.transpose())
+print(a*4)
+b=np.array([[7,8,9],[4,5,6],[1,2,3]])
+print(a.dot(b))
+
+</pre>
+
+<pre>
+    <h3>Singly Linked List</h3> 
+
+    # q5
+
+    class Node:
+    def __init__(self,value):
+        self.value=value
+        self.next=None
+
+    class LinkedList:
+    def __init__(self,head):
+        self.head=head
+    def length(self):
+        temp=self.head
+        l=0
+        while temp is not None:
+        l+=1
+        temp=temp.next
+        return l
+    def display(self):
+        temp=self.head
+        if temp is None:
+        print('List does not exist')
+        else:
+        while temp is not None:
+            print(temp.value,end=" ")
+            temp=temp.next
+        print()
+    def insertAtBegin(self,value):
+        n=Node(value)
+        n.next=self.head
+        self.head=n
+    def insertAtEnd(self,value):
+        n=Node(value)
+        temp=self.head
+        while temp.next is not None:
+        temp=temp.next
+        temp.next=n
+    def insertInBtw(self,idx,value):
+        if idx>=self.length():
+        print('Index does not exist')
+        elif idx==0:
+        self.insertAtBegin(value)
+        elif idx==self.length()-1:
+        self.insertAtEnd(value)
+        else:
+        temp=self.head
+        for i in range(idx-1):
+            temp=temp.next
+        n=Node(value)
+        n.next=temp.next
+        temp.next=n
+    def delFromStart(self):
+        temp=self.head
+        self.head=temp.next
+        temp.next=None
+    def delFromEnd(self):
+        temp=self.head
+        while temp.next.next is not None:
+        temp=temp.next
+        temp.next=None
+    def delFromBetween(self,idx):
+        if idx>self.length():
+        print("Index doesn't exists")
+        elif idx==0:
+        self.delFromStart()
+        elif idx==self.length()-1:
+        self.delFromEnd()
+        else:
+        temp= self.head
+        for i in range(idx-1):
+            temp=temp.next
+        temp.next=temp.next.next
+
+    n1=Node(11)
+    n2=Node(12)
+    n3=Node(13)
+    n4=Node(14)
+    n5=Node(15)
+    n6=Node(16)
+
+    n1.next=n2
+    n2.next=n3
+    n3.next=n4
+    n4.next=n5
+    n5.next=n6
+
+    l=LinkedList(n1)
+
+    l.display()
+    l.insertAtBegin(0)
+    l.display()
+    l.insertAtEnd(55)
+    l.display()
+    l.insertInBtw(3,51)
+    l.display()
+    l.delFromStart()
+    l.display()
+    l.delFromEnd()
+    l.display()
+    l.delFromBetween(5)
+    l.display()
+</pre>
+<pre>
+<h3>Doubly Linked List</h3>
+# q6
+
+class Node:
+def __init__(self,value):
+    self.value=value
+    self.next=None
+    self.prev=None
+
+class LinkedList:
+def __init__(self,head):
+    self.head=head
+def length(self):
+    temp=self.head
+    l=0
+    while temp is not None:
+    l+=1
+0      temp=temp.next
+    return l
+def display(self):
+    temp=self.head
+    if temp is None:
+    print('List does not exist')
+    else:
+    while temp is not None:
+        print(temp.value,end=" ")
+        temp=temp.next
+    print()
+def displayRev(self):
+    temp=self.head
+    while temp.next is not None:
+    temp=temp.next
+    while temp is not None:
+    print(temp.value,end=" ")
+    temp=temp.prev
+    print()
+def insertAtBegin(self,value):
+    n=Node(value)
+    n.next=self.head
+    self.head.prev=n
+    self.head=n
+def insertAtEnd(self,value):
+    n=Node(value)
+    temp=self.head
+    while temp.next is not None:
+    temp=temp.next
+    temp.next=n
+    n.prev=temp
+def insertInBtw(self,idx,value):
+    if idx>=self.length():
+    print('Index does not exist')
+    elif idx==0:
+    self.insertAtBegin(value)
+    elif idx==self.length()-1:
+    self.insertAtEnd(value)
+    else:
+    temp=self.head
+    for i in range(idx-1):
+        temp=temp.next
+    n=Node(value)
+    temp.next.prev=n
+    n.next=temp.next
+    n.prev=temp
+    temp.next=n
+def delFromStart(self):
+    temp=self.head
+    temp.next.prev=None
+    self.head=temp.next
+    temp.next=None
+def delFromEnd(self):
+    temp=self.head
+    while temp.next.next is not None:
+    temp=temp.next
+    temp.next.prev=None
+    temp.next=None
+def delFromBetween(self,idx):
+    if idx>self.length():
+    print("Index doesn't exists")
+    elif idx==0:
+    self.delFromStart()
+    elif idx==self.length()-1:
+    self.delFromEnd()
+    else:
+    temp= self.head
+    for i in range(idx-1):
+        temp=temp.next
+    temp1=temp.next
+    temp.next.next.prev=temp
+    temp.next=temp.next.next
+    temp1.next=None
+    temp1.prev=None
+
+n1=Node(11)
+n2=Node(12)
+n3=Node(13)
+n4=Node(14)
+n5=Node(15)
+n6=Node(16)
+
+n1.next=n2
+n2.next=n3
+n3.next=n4
+n4.next=n5
+n5.next=n6
+
+n6.prev=n5
+n5.prev=n4
+n4.prev=n3
+n3.prev=n2
+n2.prev=n1
+l=LinkedList(n1)
+
+l.display()
+l.displayRev()
+l.insertAtBegin(0)
+l.display()
+l.displayRev()
+l.insertAtEnd(55)
+l.display()
+l.displayRev()
+l.insertInBtw(3,51)
+l.display()
+l.displayRev()
+l.delFromStart()
+l.display()
+l.displayRev()
+l.delFromEnd()
+l.display()
+l.displayRev()
+l.delFromBetween(5)
+l.display()
+l.displayRev()
+</pre>
+
+<pre>
+<h3>Circular Linked LinkedList</h3>
+
+# q7
+
+class Node:
+  def __init__(self,value):
+    self.value=value
+    self.next=None
+
+class CircLinkedList:
+  def __init__(self,head,tail):
+    self.head=head
+    self.tail=tail
+  def length(self):
+    temp=self.head
+    l=1
+    temp=temp.next
+    while temp.next is not self.head:
+      l+=1
+      temp=temp.next
+    return l
+  def display(self):
+    temp=self.head
+    if temp is None:
+      print('List does not exist')
+    else:
+      while temp is not self.tail:
+        print(temp.value,end=" ")
+        temp=temp.next
+      print(self.tail.value,end=" ")
+      print()
+  def insertAtBegin(self,value):
+    n=Node(value)
+    n.next=self.head
+    self.tail.next=n
+    self.head=n
+  def insertAtEnd(self,value):
+    n=Node(value)
+    temp=self.head
+    while temp is not self.tail:
+      temp=temp.next
+    n.next=self.head
+    temp.next=n
+    self.tail=n
+
+  def insertInBtw(self,idx,value):
+    if idx>=self.length():
+      print('Index does not exist')
+    elif idx==0:
+      self.insertAtBegin(value)
+    elif idx==self.length()-1:
+      self.insertAtEnd(value)
+    else:
+      temp=self.head
+      for i in range(idx-1):
+        temp=temp.next
+      n=Node(value)
+      n.next=temp.next
+      temp.next=n
+  def delFromStart(self):
+    temp=self.head
+    self.head=temp.next
+    self.tail.next=temp.next
+    temp.next=None
+  def delFromEnd(self):
+    temp=self.head
+    while temp.next is not self.tail:
+      temp=temp.next
+    temp.next=self.head
+    self.tail.next=None
+    self.tail=temp
+  def delFromBetween(self,idx):
+    if idx>self.length():
+      print("Index doesn't exists")
+    elif idx==0:
+      self.delFromStart()
+    elif idx==self.length()-1:
+      self.delFromEnd()
+    else:
+      temp= self.head
+      for i in range(idx-1):
+        temp=temp.next
+      temp.next=temp.next.next
+
+n1=Node(11)
+n2=Node(12)
+n3=Node(13)
+n4=Node(14)
+n5=Node(15)
+n6=Node(16)
+
+n1.next=n2
+n2.next=n3
+n3.next=n4
+n4.next=n5
+n5.next=n6
+
+l=CircLinkedList(n1,n6)
+
+l.display()
+l.insertAtBegin(0)
+l.display()
+l.insertAtEnd(55)
+l.display()
+l.insertInBtw(3,51)
+l.display()
+l.delFromStart()
+l.display()
+l.delFromEnd()
+l.display()
+l.delFromBetween(5)
+l.display()
+</pre>
+
+<pre>
+<h3>Queue using List </h3>
+
+# q8
+
+class Queue:
+  def __init__(self,data):
+    self.data=data
+  def display(self):
+    print(self.data)
+  def enqueue(self,value):
+    self.data.append(value)
+  def dequeue(self):
+    n=self.data[0]
+    self.data.pop(0)
+    return n
+
+q=Queue([1,2,3,4,5])
+q.display()
+q.enqueue(6)
+q.display()
+print(q.dequeue())
+q.display()
+</pre>
+
+<pre>
+<h3>Queue using Linked LinkedList</h3>
+
+# q9
+
+class Node:
+  def __init__(self,value):
+    self.value=value
+    self.next=None
+
+class LinkedList:
+  def __init__(self,head):
+    self.head=head
+  def display(self):
+    temp=self.head
+    if temp is None:
+      print('List does not exist')
+    else:
+      while temp is not None:
+        print(temp.value,end=" ")
+        temp=temp.next
+    print()
+  def insertAtEnd(self,value):
+    n=Node(value)
+    temp=self.head
+    while temp.next is not None:
+      temp=temp.next
+    temp.next=n
+  def delFromStart(self):
+    temp=self.head
+    n=self.head.value
+    self.head=temp.next
+    temp.next=None
+    print(n)
+
+n1=Node(11)
+n2=Node(12)
+n3=Node(13)
+n4=Node(14)
+n5=Node(15)
+n6=Node(16)
+
+n1.next=n2
+n2.next=n3
+n3.next=n4
+n4.next=n5
+n5.next=n6
+
+l=LinkedList(n1)
+
+class Queue:
+  def __init__(self,data):
+    self.data=data
+  def display(self):
+    self.data.display()
+  def enqueue(self,value):
+    self.data.insertAtEnd(value)
+  def dequeue(self):
+    self.data.delFromStart()
+
+q=Queue(l)
+q.display()
+q.enqueue(6)
+q.display()
+q.dequeue()
+q.display()
+</pre>
+
+<pre>
+<h3>Stack using List </h3>
+
+# q10
+
+class Stack:
+  def __init__(self,data):
+    self.data=data
+  def display(self):
+    print(self.data)
+  def insert(self,value):
+    self.data.append(value)
+  def remove(self):
+    return self.data.pop(len(self.data)-1)
+
+s=Stack([1,2,3,4])
+s.display()
+s.insert(10)
+s.display()
+print(s.remove())
+s.display()
+
+
+</pre>
+    
+<pre>
+<h3>Stack using Linked LinkedList</h3>
+
+# q11
+class Node:
+  def __init__(self,value):
+    self.value=value
+    self.next=None
+
+class LinkedList:
+  def __init__(self,head):
+    self.head=head
+  def display(self):
+    temp=self.head
+    if temp is None:
+      print('List does not exist')
+    else:
+      while temp is not None:
+        print(temp.value,end=" ")
+        temp=temp.next
+    print()
+  def insertAtEnd(self,value):
+    n=Node(value)
+    temp=self.head
+    while temp.next is not None:
+      temp=temp.next
+    temp.next=n
+  def delFromEnd(self):
+    temp=self.head
+    while temp.next.next is not None:
+      temp=temp.next
+    temp.next=None
+
+class Stack:
+  def __init__(self,data):
+    self.data=data
+  def display(self):
+    self.data.display()
+  def insert(self,value):
+    self.data.insertAtEnd(value)
+  def remove(self):
+    self.data.delFromEnd()
+
+
+
+n1=Node(11)
+n2=Node(12)
+n3=Node(13)
+n4=Node(14)
+n5=Node(15)
+n6=Node(16)
+
+n1.next=n2
+n2.next=n3
+n3.next=n4
+n4.next=n5
+n5.next=n6
+
+l=LinkedList(n1)
+
+s=Stack(l)
+s.display()
+s.insert(55)
+s.display()
+s.remove()
+s.display()
+</pre>
+
+<pre>
+<h3>Factorial Program</h3>
+
+# q12
+
+def factorial(n):
+  if n<=1:
+    return 1
+  return n*factorial(n-1)
+
+print(factorial(5))
+
+</pre>
+
+<pre>
+<h3>Fibonacci </h3>
+
+# q13
+
+def fibonacci_tail(n,b,a):
+  if n<=1:
+    return b
+  else:
+    return fibonacci_tail(n-1,b+a,b)
+
+
+def fibonacci(n):
+  if n<=0:
+    return -1
+  elif n==1:
+    return 0
+  elif n==2:
+    return 1
+  return fibonacci_tail(n,1,0)
+
+print(fibonacci(100))
+</pre>
+
+</body>
+</html>
