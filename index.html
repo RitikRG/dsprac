@@ -7,48 +7,10 @@
 </head>
 <body>
 <pre>
-<h2>Code Zip</h2>
-<a href="https://drive.google.com/file/d/1p8h4fF5TKlrGeLbwUtmDwoULgp-d_LbS/view?usp=sharing" >Download</a>
+<h2>CPT</h2>
+<a href="https://drive.google.com/drive/folders/1fSsP-ysBhTcC9rAJzHHf_ZYlU9-vh_ze?usp=sharing" >Download</a>
 </pre>
 <pre>
-<h2>Mongodb Code </h2>
-
-db.students.insertMany([ 
-{ name: "Riya Saini", age: 20, grade: "A" }, 
-{ name: "Ritik Gupta", age: 21, grade: "A" }, 
-{ name: "Gurvesh", age: 20, grade: "A" }, 
-{ name: "Nandini", age: 19, grade: "B" }, 
-{ name: "Ranjana", age: 19, grade: "B" }, 
-{ name: "Test", age: 20, grade: "C" }, 
-]) 
-db.students.deleteOne({ name: "Ritik Gupta" }) 
-db.students.find(); 
-db.students.find({ grade: "A" }); 
-db.students.updateOne( 
-{ name: "Nandini" }, 
-{ $set: { age: 20 } } 
-); 
-db.students.find({ name: "Nandini" }); 
-db.students.createIndex({ name: 1 }); 
-db.students.getIndexes(); 
-db.students.aggregate([ 
-{ $match: { grade: "A" } }, 
-{ 
-$group: { 
-_id: "$grade", 
-averageAge: { $avg: "$age" }, 
-totalStudents: { $sum: 1 } 
-} 
-}, 
-{ $sort: { averageAge: -1 } } 
-]); 
-
-Code (Bash):
-	
-mongodump --db=dB --out=/backup
-mongorestore /backup/dB
-
-</pre>
 
 
 </body>
